@@ -1,0 +1,145 @@
+.bg {
+    display: flex;
+    justify-content: space-around;
+}
+
+.link li {
+    list-style-type: none;
+    display: inline-block;
+    font-size: 18px;
+    padding: 20px;
+}
+
+.link li a {
+    text-decoration: none;
+    color: black;
+}
+
+.link button {
+    background-color: #164863;
+    color: whitesmoke;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    margin-top: 10px;
+}
+.link button:hover{
+    background-color: #021c29;
+}
+
+.main {
+    text-align: center;
+    margin-top: 180px;
+}
+.main div{
+    display: flex;
+    flex-direction: column;
+    box-shadow: 1px 1px 1px 1px rgb(223, 221, 221);
+    /* background-color: #9BBEC8; */
+    padding: 50px 70px;
+    border-radius: 30px;
+}
+.main input{
+    border-radius: 100px;
+    border: 1px solid gainsboro;
+    outline: none;
+    width: 300px;
+    padding: 10px 20px;
+    margin-top: 20px;
+}
+.main button{
+    border-radius: 100px;
+    border: none;
+    outline: none;
+    width: 300px;
+    padding: 10px;
+    background-color: #164863;
+    color: white;
+    margin-top: 20px;
+}
+.main button:hover{
+    background-color: #021c29;
+}
+
+#label{
+    padding: 20px 0px;
+}
+
+#post{
+    background-color: #164863;
+    margin-top: 20px;
+    border: none;
+    border-radius: 100px;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+#post:hover{
+    background-color: #021c29;
+}
+
+.user-profile-card {
+    width: 400px;
+    margin-top: 180px;
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .user-profile-image {
+    overflow: hidden;
+    margin: 20px 0px 0px 0px;
+  }
+  
+  .user-profile-details {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .user-profile-details h2 {
+    font-size: 24px;
+    font-weight: bold;
+    /* margin-bottom: 20px; */
+  }
+  
+  .user-profile-details button {
+    border: none;
+    border-radius: 20px;
+    background-color: #164863;
+    color: white;
+    font-weight: bold;
+    padding: 10px 30px;
+    margin: 10px 10px;
+  }
+  
+  .editpro{
+    display: flex;
+    flex-direction: column;
+    /* box-shadow: 1px 1px 1px 1px rgb(223, 221, 221); */
+    padding: 50px 70px;
+    /* border-radius: 30px; */
+  }
+  .editpro input{
+    border-radius: 100px;
+    border: 1px solid gainsboro;
+    outline: none;
+    width: 500px;
+    padding: 10px 15px;
+    margin-top: 20px;
+  }
+
+  .editpro button{
+    border-radius: 100px;
+    border: none;
+    outline: none;
+    width: 500px;
+    padding: 10px;
+    background-color: #164863;
+    color: white;
+    margin-top: 20px;
+  }
+
+  .editpro button:hover{
+    background-color: #021c29;
+}
+
