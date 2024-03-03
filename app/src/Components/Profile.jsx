@@ -7,18 +7,18 @@ import { Card } from 'react-bootstrap';
 
 const Profile = () => {
 
-    const { id } = useParams()
-    const [data, setData] = useState([''])
+    // const { id } = useParams()
+    // const [data, setData] = useState([''])
 
-    useEffect(() => {
-        let fetchdata = async () => {
-            let response = await axios.get(`http://localhost:5000/findOne/${id}`)
-            console.log(response.data);
-            setData(response.data)
-        }
-        fetchdata()
-    }, [])
-    console.log(data);
+    // useEffect(() => {
+    //     let fetchdata = async () => {
+    //         let response = await axios.get(`http://localhost:5000/findOne/${id}`)
+    //         console.log(response.data);
+    //         setData(response.data)
+    //     }
+    //     fetchdata()
+    // }, [])
+    // console.log(data);
 
     return (
         <>
@@ -30,11 +30,11 @@ const Profile = () => {
                             <Card.Img variant="top" src={img} className="user-profile-image" style={{borderRadius:'100%',width:'200px',height:'200px'}} />
                             <Card.Body className="user-profile-details">
                                 <Card.Title>
-                                    <h2>{data.fullname}</h2>
+                                    <h2>Your Name</h2>
                                 </Card.Title>
                                 <Card.Text>
                                     <div>
-                                        <Link to={`/editprofile/${data._id}`}><button>Edit Profile</button></Link>
+                                        <Link to={`/editprofile`}><button>Edit Profile</button></Link>
                                         <button>Your Blogs</button>
                                     </div>
                                 </Card.Text>
@@ -45,7 +45,7 @@ const Profile = () => {
                         <img src={img} alt='' />
                     </div>
                     <div className="user-profile-details">
-                        <h2>{data.fullname}</h2>
+                        <h2>your name</h2>
                         <div>
                             <button>Edit Profile</button>
                             <button>Your Blogs</button>

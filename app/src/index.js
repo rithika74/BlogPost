@@ -31,7 +31,7 @@ root.render(
             <Route path='login' element={<Login />} />
             <Route path='signup' element={<Signup />} />
             <Route path='add' element={<Create />} />
-            <Route path='/profile/:id' element={<Profile />} />
+            <Route path='/profile' element={<Profile />} />
             <Route path='/editprofile/:id' element={<EditProfile />} />
           </Route>
         </Routes>

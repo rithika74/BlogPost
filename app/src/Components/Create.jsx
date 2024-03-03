@@ -1,61 +1,97 @@
+import axios from 'axios';
 import React, { useState } from 'react'
-import { Container, Form, Button } from 'react-bootstrap';
+import { Container, Form, Button, ToastContainer } from 'react-bootstrap';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { adddata, postdata } from './DataSlice';
 
 const Create = () => {
-    const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [image, setImage] = useState(null);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Logic to handle form submission
-    console.log('Submitted:', { title, content, image });
+  const [data, setData] = useState({
+    title: '',
+    content: ''
+  });
+  const [image, setImage] = useState('')
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const handleChange = (event) => {
+    setData({ ...data, [event.target.name]: event.target.value });
   };
 
+  const handleImageChange = (event) => {
+    setImage(event.target.files[0]);
+  };
+
+  console.log(image);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const authorId = localStorage.getItem('id');
+      console.log(authorId);
+      const postData = {
+        ...data,
+        author: authorId
+      };
+
+      const formData = new FormData();
+
+      formData.append('title', postData.title);
+      formData.append('content', postData.content);
+      formData.append('image', image);
+      formData.append('author', authorId);
+
+      let response = await axios.post('http://localhost:5000/addblog', formData,
+        {
+          headers: { 'Content-Type': 'multipart/form-data' }
+        }
+      );
+      console.log("ghffgjgg",response.data);
+      if (response.data) {
+        toast.success('Blog Posted Successfully');
+        setData({
+          title: '',
+          content: ''
+        });
+        setImage('');
+        setData('')
+      }
+    } catch (error) {
+      console.error('Error adding blog post:', error);
+    }
+  };
+
+
   return (
-    <section className='d-flex justify-content-center'>
-      <Container style={{ marginTop: '150px' }}>
-        <h1>Create Your Post</h1>
-        <Form onSubmit={handleSubmit} style={{ marginTop: '20px' }} id='label'>
-          <Form.Group controlId="title">
-            <FloatingLabel controlId="floatingTextarea" label="Enter Title">
-              <Form.Control
-                type="text"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                placeholder="Enter title"
-              />
-            </FloatingLabel>
-          </Form.Group>
-          <Form.Group controlId="content" id='label'>
-            <FloatingLabel controlId="floatingTextarea2" label="Enter Content">
-              <Form.Control
-                as="textarea"
-                rows={6}
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                placeholder="Enter content"
-                style={{ height: '200px' }}
-              />
-            </FloatingLabel>
-          </Form.Group>
-          <Form.Group controlId="image">
-            <FloatingLabel controlId="floatingInput" label="Choose Image" >
-              <Form.Control
-                type="file"
-                onChange={(e) => setImage(e.target.files[0])}
-              />
-            </FloatingLabel>
-          </Form.Group>
-          <Button type="submit" id='post'>
-            Create Post
-          </Button>
-        </Form>
-      </Container>
-    </section>
-    
-    )
+    <>
+
+
+      <section className='d-flex justify-content-center'>
+        <div style={{ marginTop: '150px' }}>
+          <h1>Create Your Blog</h1>
+          <form action="">
+            <div className='post'>
+              <div><input type="text" name="title" onChange={handleChange} value={data.title ? data.title : ''} id="" placeholder='Title' /></div>
+              <div><textarea name="content" onChange={handleChange} value={data.content ? data.content : ''} id="" cols="65" rows="10" placeholder='Content'></textarea></div>
+              <div><input type="file" name="image" onChange={handleImageChange} id="" style={{ padding: '0px' }} /></div>
+              <div><button onClick={handleSubmit}>Submit</button></div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+
+      <ToastContainer />
+
+    </>
+
+
+
+  )
 }
 
 export default Create
+
+

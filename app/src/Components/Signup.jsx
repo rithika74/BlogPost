@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import { adddata } from './DataSlice';
@@ -11,9 +11,16 @@ const Signup = () => {
     fullname: '',
     email: '',
     password: ''
-  })
+  });
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  useEffect(() => {
+    const user = localStorage.getItem('id')
+    if (user) {
+      navigate('/')
+    }
+  })
 
   const handleChange = (event) => {
     setData({ ...data, [event.target.name]: event.target.value })
