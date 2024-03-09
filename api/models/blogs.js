@@ -3,13 +3,10 @@ const authors=require('./author')
 
 const blogScehme = new mongoose.Schema({
     title: {
-        type: String,
-        required: true
+        type: String
     },
     content: {
-        type: String,
-        unique: true,
-        required: true
+        type: String
     },
     image: {
         type: String

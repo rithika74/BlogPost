@@ -16,7 +16,7 @@ const Login = () => {
     if (user) {
       navigate('/')
     }
-  })
+  },[])
 
   const handleChange = (event) => {
     setData({ ...data, [event.target.name]: event.target.value })

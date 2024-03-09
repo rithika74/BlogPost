@@ -29,7 +29,7 @@ const Signup = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (data.fullname && data.email && data.password) {
-      dispatch(adddata(data));
+      // dispatch(adddata(data));
       try {
         const response = await axios.post('http://localhost:5000/insert', data);
         if (response.data.emailExists) {

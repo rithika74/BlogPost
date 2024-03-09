@@ -78,7 +78,8 @@
   padding: 10px 20px;
   margin-top: 20px;
 }
-.post textarea{
+
+.post textarea {
   border: 1px solid gainsboro;
   border-radius: 5px;
   outline: none;
@@ -88,64 +89,32 @@
 }
 
 
-.post button{
-    background-color: #164863;
-    color: white;
-    margin-top: 20px;
-    border: none;
-    border-radius: 100px;
-    font-weight: bold;
-    padding: 10px 100px;
-}
-.post button:hover{
-    background-color: #021c29;
-}
-
-.user-profile-card {
-  width: 400px;
-  margin-top: 180px;
-  border: none;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.user-profile-image {
-  overflow: hidden;
-  margin: 20px 0px 0px 0px;
-}
-
-.user-profile-details {
-  padding: 20px;
-  text-align: center;
-}
-
-.user-profile-details h2 {
-  font-size: 24px;
-  font-weight: bold;
-  /* margin-bottom: 20px; */
-}
-
-.user-profile-details button {
-  border: none;
-  border-radius: 20px;
+.post button {
   background-color: #164863;
   color: white;
+  margin-top: 20px;
+  border: none;
+  border-radius: 100px;
   font-weight: bold;
-  padding: 10px 30px;
-  margin: 10px 10px;
+  padding: 10px 100px;
 }
+
+.post button:hover {
+  background-color: #021c29;
+}
+
 
 .editpro {
   display: flex;
   flex-direction: column;
-  /* box-shadow: 1px 1px 1px 1px rgb(223, 221, 221); */
   padding: 50px 70px;
-  /* border-radius: 30px; */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 30px;
 }
 
 .editpro input {
-  border-radius: 100px;
+  border-radius: 10px;
   border: 1px solid gainsboro;
   outline: none;
   width: 500px;
@@ -157,8 +126,8 @@
   border-radius: 100px;
   border: none;
   outline: none;
-  width: 500px;
-  padding: 10px;
+  padding: 10px 30px;
+  float: right;
   background-color: #164863;
   color: white;
   margin-top: 20px;
@@ -167,3 +136,119 @@
 .editpro button:hover {
   background-color: #021c29;
 }
+
+.img button {
+  border-radius: 100px;
+  border: none;
+  outline: none;
+  padding: 10px 30px;
+  float: right;
+  background-color: #164863;
+  color: white;
+  margin-top: 20px;
+  width: 300px;
+}
+
+.img button:hover {
+  background-color: #021c29;
+}
+
+.blogs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+}
+
+.blogs div {
+  margin: 0px 20px;
+}
+
+.blog-details h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+
+.edit-btn,
+.delete-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s;
+  padding: 5px;
+}
+
+.edit-btn svg,
+.delete-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.edit-btn {
+  color: #007bff; 
+}
+
+.delete-btn {
+  color: #dc3545;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+  color: #0056b3;
+}
+
+
+
+
+
+/* 
+.profile-badge{
+  border:1px solid #c1c1c1;
+  padding:5px;
+  position: relative;
+}
+
+.user-detail{
+  background-color: #fff;
+  position: relative;
+  padding:115px 0px 10px 0px;
+  color:#8B8B89;
+}
+.user-detail h3{
+  margin: 0px;
+  margin:0px 0px 5px 0px;
+  color: #000;
+}
+.user-detail p{
+  font-size:14px;
+}
+.user-detail .btn{
+  margin-bottom:10px;
+  background-color: #fff;
+  border:1px solid #DEDEDE;
+  border-radius: 0px;
+  color:black;
+}
+.user-detail .btn i{
+  color:#D35B4D;
+  padding-right:18px;
+}
+.profile-pic{
+  position: absolute;
+  height:120px;
+  width:120px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0px;
+  z-index: 1001;
+  padding: 10px;
+}
+.profile-pic img{
+ 
+  border-radius: 50%;
+  box-shadow: 0px 0px 5px 0px #c1c1c1;
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+}    */

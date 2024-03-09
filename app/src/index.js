@@ -18,6 +18,8 @@ import { Store } from './Components/Store';
 import Profile from './Components/Profile';
 import EditProfile from './Components/EditProfile';
 import Blogs from './Components/Blogs';
+import EditPost from './Components/EditPost';
+import UserBlogs from './Components/UserBlogs';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -33,6 +35,8 @@ root.render(
             <Route path='add' element={<Create />} />
             <Route path='/profile' element={<Profile />} />
             <Route path='/editprofile/:id' element={<EditProfile />} />
+            <Route path='/editpost/:id' element={<EditPost />} />
+            <Route path='/userblogs/:id' element={<UserBlogs />} />
           </Route>
         </Routes>
 
