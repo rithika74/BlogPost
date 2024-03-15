@@ -19,8 +19,38 @@ const db = mongoose.connection
 
 app.use(express.json())
 app.use(cors())
-app.use('/uploads', express.static('uploads'));
+app.use('/uploads/blog', express.static(path.join(__dirname, 'uploads', 'blog')));
+app.use('/uploads/profile', express.static(path.join(__dirname, 'uploads', 'profile')));
+// app.use('/uploads/blog', express.static('blog'));
+// app.use('/uploads/profile', express.static('profile'));
 const saltrounds = 10;
+
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/blog/')
+    },
+    filename: function (req, file, cb) {
+        const uniqueSuffix = Date.now();
+        cb(null, uniqueSuffix + file.originalname)
+    }
+});
+
+const upload = multer({ storage: storage });
+
+
+const profileImage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/profile/')
+    },
+    filename: function (req, file, cb) {
+        const uniqueSuffix = Date.now();
+        cb(null, uniqueSuffix + file.originalname)
+    }
+})
+
+const uploadProfile = multer({ storage: profileImage });
+
 
 app.post('/insert', async (req, res) => {
     try {
@@ -81,62 +111,59 @@ app.get('/findOne/:id', verifyToken, async (req, res) => {
     res.json(response);
 })
 
-app.put('/update/:id', async (req, res) => {
-    let id = req.params.id;
-    let response = await Author.findByIdAndUpdate(id, req.body)
-    console.log(response);
-})
-
-
-
-
-// const profileImage = multer.diskStorage({
-//     destination: function (req, file, cb) {
-//         cb(null, 'profile/')
-//     },
-//     filename: function (req, file, cb) {
-//         const uniqueSuffix = Date.now();
-//         cb(null, uniqueSuffix + file.originalname)
-//     }
+// app.put('/update/:id', async (req, res) => {
+//     let id = req.params.id;
+//     let response = await Author.findByIdAndUpdate(id, req.body)
+//     console.log(response);
 // })
 
-// const uploadProfile = multer({ storage: profileImage });
-
-// app.put('/update/:id', verifyToken, uploadProfile.single('image'), async (req, res) => {
-//     try {
-//         const id = req.params.id;
-//         let newData = { ...req.body };
-//         const imagePath = req.file ? req.file.filename : undefined;
-
-//         if (newData.password) {
-//             const hashedPassword = await bcrypt.hash(newData.password, saltrounds);
-//             newData = { ...newData, password: hashedPassword };
-//         }
-//         const response = await Author.findByIdAndUpdate(id, newData, { new: true });
-
-//         if (!response) {
-//             return res.status(404).json({ message: 'User not found' });
-//         }
-//         if (imagePath) {
-//             if (response.image) {
-//                 const oldImagePath = path.join(__dirname, 'profile', response.image);
-//                 if (fs.existsSync(oldImagePath)) {
-//                     fs.unlinkSync(oldImagePath);
-//                 }
-//             }
-//             response.image = imagePath;
-//         }
-
-//         const updatedAuthor = await response.save();
-
-//         res.json({ message: 'Profile updated successfully', response: updatedAuthor });
 
 
-//     } catch (error) {
-//         console.error('Error updating profile:', error);
-//         res.status(500).json({ message: 'Internal server error' });
-//     }
-// });
+
+app.put('/update/:id', verifyToken, uploadProfile.single('image'), async (req, res) => {
+    try {
+        const id = req.params.id;
+        let newData = { ...req.body };
+        const imagePath = req.file ? req.file.filename : undefined;
+
+        console.log('oldddddddd    ', newData.password);
+        const pass = newData.password;
+
+        if (!newData.password) {
+            delete newData.password;
+        } else {
+            const hashedPassword = await bcrypt.hash(newData.password, saltrounds);
+            newData.password = hashedPassword;
+        }
+        
+
+        console.log('newwwwwwwwww   ', newData.password);
+
+        const response = await Author.findByIdAndUpdate(id, newData, { new: true });
+
+        if (!response) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        if (imagePath) {
+            if (response.image) {
+                const oldImagePath = path.join(__dirname, 'uploads', 'profile', response.image);
+                if (fs.existsSync(oldImagePath)) {
+                    fs.unlinkSync(oldImagePath);
+                }
+            }
+            response.image = imagePath;
+        }
+
+        const updatedAuthor = await response.save();
+
+        res.json({ message: 'Profile updated successfully', response: updatedAuthor });
+
+    } catch (error) {
+        console.error('Error updating profile:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
 
 
 
@@ -163,17 +190,7 @@ app.post('/loginOne', async (req, res) => {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'uploads/')
-    },
-    filename: function (req, file, cb) {
-        const uniqueSuffix = Date.now();
-        cb(null, uniqueSuffix + file.originalname)
-    }
-});
 
-const upload = multer({ storage: storage });
 
 
 app.post('/addblog', upload.single('image'), async (req, res) => {
@@ -232,7 +249,9 @@ app.get('/userblogs/:id', async (req, res) => {
     }
 })
 
-app.get('/blogOne/:id',async(req,res)=>{
+
+
+app.get('/blogOne/:id', async (req, res) => {
     try {
         let id = req.params.id;
         console.log(id);
@@ -254,7 +273,7 @@ app.delete('/deletepost/:id', async (req, res) => {
         }
 
         if (blog.image) {
-            const imagePath = path.join(__dirname, 'uploads', blog.image);
+            const imagePath = path.join(__dirname, 'uploads', 'blog', blog.image);
             fs.unlinkSync(imagePath);
         }
         await Blog.findByIdAndDelete(id);
@@ -265,39 +284,6 @@ app.delete('/deletepost/:id', async (req, res) => {
     }
 });
 
-// app.put('/updateblog/:id', upload.single('image'), async (req, res) => {
-//     try {
-//         const id = req.params.id;
-//         const { title, content } = req.body;
-//         const imagePath = req.file ? req.file.filename : undefined;
-
-//         let blog = await Blog.findById(id);
-//         if (!blog) {
-//             return res.status(404).json({ message: 'Blog post not found' });
-//         }
-
-//         if (blog.image) {
-//             const oldImagePath = path.join(__dirname, 'uploads', blog.image);
-//             fs.unlinkSync(oldImagePath);
-//         }
-
-//         if (title) {
-//             blog.title = title;
-//         }
-//         if (content) {
-//             blog.content = content;
-//         }
-//         if (imagePath) {
-//             blog.image = imagePath;
-//         }
-//         const updatedBlog = await blog.save();
-
-//         res.json({ message: 'Blog post updated successfully', blog: updatedBlog });
-//     } catch (error) {
-//         console.error('Error updating blog post:', error);
-//         res.status(500).json({ message: 'Internal server error' });
-//     }
-// });
 
 app.put('/updateblog/:id', upload.single('image'), async (req, res) => {
     try {
@@ -318,13 +304,16 @@ app.put('/updateblog/:id', upload.single('image'), async (req, res) => {
         }
         if (imagePath !== undefined) {
             if (blog.image) {
-                const oldImagePath = path.join(__dirname, 'uploads', blog.image);
+                const oldImagePath = path.join(__dirname, 'uploads', 'blog', blog.image);
                 if (fs.existsSync(oldImagePath)) {
                     fs.unlinkSync(oldImagePath);
                 }
             }
             blog.image = imagePath;
         }
+
+        console.log('dfgr', blog);
+
         const updatedBlog = await blog.save();
 
         res.json({ message: 'Blog post updated successfully', blog: updatedBlog });

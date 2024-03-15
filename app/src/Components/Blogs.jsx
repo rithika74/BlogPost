@@ -1,13 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { FaEdit, FaTrash } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [refresh, setRefresh] = useState(false);
+  const navigate = useNavigate()
 
   useEffect(() => {
     getBlogs();
@@ -23,50 +22,28 @@ const Blogs = () => {
     }
   };
 
-  const handleDelete = async (id) => {
-    console.log(id);
-    const confirm = window.confirm('Are you sure you want to delete')
-    try {
-      if (confirm) {
-        setRefresh(!refresh);
-        let response = await axios.delete(`http://localhost:5000/deletepost/${id}`);
-        console.log(response);
-        window.location.reload();
-      }
-    } catch (error) {
-      console.log('Error deleting blog post');
-    }
-  };
-
   console.log("kjhhhkjkjh", blogs);
   return (
     <>
-      <section style={{ marginTop: '150px' }} className='d-flex justify-content-center '>
-        <div className='blogs'>
+      <section style={{ marginTop: '150px' }} className='d-flex justify-content-center'>
+        <div className='blogs' style={{gap:'10px'}}>
           {blogs.length > 0 ? (
             blogs.map(item => (
-              <div key={item._id} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-                <Card style={{ width: '22rem', height: '26rem', marginBottom: '50px' }} >
-                  <Card.Img variant="top" src={`http://localhost:5000/uploads/${item.image}`} alt="img" width={'200px'} height={'200px'} />
-                  <Card.Body className="blog-details">
+              <div key={item._id} className='blogs'>
+                <Card style={{  cursor:'pointer' }} className='card' onClick={() => { navigate(`/blogdetails/${item._id}`) }}>
+                  <Card.Img variant="top" src={`http://localhost:5000/uploads/blog/${item.image}`} alt="blog" height={'200px'} />
+                  <Card.Body>
                     <Card.Title>
                       <h2>{item.title}</h2>
                     </Card.Title>
                     <Card.Text>
-                      <div>{item.content}</div>
+                      <div>{item.content.length > 100 ? `${item.content.substring(0, 100)}...` : item.content}</div>
+                      {item.content.length > 100 && (
+                        <div className="read-more">
+                          <Link >Read More</Link>
+                        </div>
+                      )}
                     </Card.Text>
-                    {/* <Card.Text>
-                      <div className='d-flex flex-wrap justify-content-end align-items-center '>
-                        <Link to={`/editpost/${item._id}`}>
-                          <button className='edit-btn' >
-                            <FaEdit />
-                          </button>
-                        </Link>
-                        <button className='delete-btn' onClick={() => handleDelete(item._id)}>
-                          <FaTrash />
-                        </button>
-                      </div>
-                    </Card.Text> */}
                   </Card.Body>
                 </Card>
               </div>
@@ -76,8 +53,12 @@ const Blogs = () => {
           )}
         </div>
       </section>
+
+      
     </>
   );
 }
 
 export default Blogs;
+
+

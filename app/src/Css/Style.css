@@ -7,7 +7,7 @@
   list-style-type: none;
   display: inline-block;
   font-size: 18px;
-  padding: 20px;
+  padding: 10px;
 }
 
 .link li a {
@@ -15,17 +15,20 @@
   color: black;
 }
 
-.link button {
-  background-color: #164863;
-  color: whitesmoke;
-  font-weight: bold;
-  padding: 10px 20px;
-  border: none;
-  margin-top: 10px;
+.logout {
+  color: red;
+  /* font-weight: 400; */
 }
 
-.link button:hover {
-  background-color: #021c29;
+.logout:hover {
+  color: #c10303;
+}
+
+.login{
+  color: #0056b3;
+}
+.login:hover{
+  color: #3788df;
 }
 
 .main {
@@ -36,8 +39,7 @@
 .main div {
   display: flex;
   flex-direction: column;
-  box-shadow: 1px 1px 1px 1px rgb(223, 221, 221);
-  /* background-color: #9BBEC8; */
+  box-shadow: 1px 2px 3px 2px rgb(223, 221, 221);
   padding: 50px 70px;
   border-radius: 30px;
 }
@@ -68,6 +70,10 @@
 
 #label {
   padding: 20px 0px;
+}
+
+.blogpost {
+  margin: 0px;
 }
 
 .post input {
@@ -103,11 +109,58 @@
   background-color: #021c29;
 }
 
+@media (max-width: 768px) {
+
+  .blogpost{
+    margin: 0px 10px 20px 10px;
+  }
+
+  .post input,
+  .post textarea {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+
+  .blogpost{
+    margin: 0px 10px 20px 10px;
+  }
+
+  .post input,
+  .post textarea {
+    width: calc(100% - 40px);
+  }
+
+  .post button {
+    width: 200px;
+    padding: 10px;
+  }
+}
+
+
+.profile {
+  margin: 0px 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .editpro {
   display: flex;
   flex-direction: column;
+  width: 40rem;
   padding: 50px 70px;
+  margin: 40px 0px;
+  background-color: rgb(247, 255, 255);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border: none;
   border-radius: 30px;
@@ -137,6 +190,7 @@
   background-color: #021c29;
 }
 
+
 .img button {
   border-radius: 100px;
   border: none;
@@ -153,6 +207,37 @@
   background-color: #021c29;
 }
 
+@media (max-width: 768px) {
+  .profile {
+    margin: 0px 20px;
+  }
+
+  .editpro {
+    width: auto;
+    padding: 30px;
+  }
+
+  .editpro input {
+    width: 100%;
+  }
+
+  .img button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .editpro input {
+    width: calc(100% - 30px);
+  }
+
+  .img button {
+    width: 200px;
+    /* width: calc(100% - 30px);  */
+  }
+}
+
+
 .blogs {
   display: flex;
   flex-wrap: wrap;
@@ -160,15 +245,46 @@
 
 }
 
-.blogs div {
-  margin: 0px 20px;
+.card{
+  margin: 0px 10px 50px 10px;
+  width: 22rem;
+  height: 22rem;
 }
+
+@media (max-width: 768px) {
+  .card{
+    margin: 0px 10px 20px 10px;
+    /* width: 18rem;
+    height: 18rem; */
+  }
+}
+@media (max-width:576px) {
+  .card{
+    margin: 0px 10px 20px 10px;
+    width: 18rem;
+    height: 18rem;
+  }
+}
+
+/* @media (max-width: 768px) {
+  .card{
+    margin: 0px 30px 20px 30px;
+    width: 18rem;
+    height: 18rem;
+  }
+}
+@media (max-width: 576px) {
+  .card{
+    margin: 0px 30px 20px 30px;
+    width: 18rem;
+    height: 18rem;
+  }
+} */
 
 .blog-details h2 {
   font-size: 24px;
   font-weight: bold;
 }
-
 
 .edit-btn,
 .delete-btn {
@@ -186,7 +302,7 @@
 }
 
 .edit-btn {
-  color: #007bff; 
+  color: #007bff;
 }
 
 .delete-btn {
@@ -198,57 +314,22 @@
   color: #0056b3;
 }
 
-
-
-
-
-/* 
-.profile-badge{
-  border:1px solid #c1c1c1;
-  padding:5px;
-  position: relative;
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 150px 0px 50px 0px;
 }
 
-.user-detail{
-  background-color: #fff;
-  position: relative;
-  padding:115px 0px 10px 0px;
-  color:#8B8B89;
+.details img {
+  width: 70rem;
+  margin-top: 30px;
+  border-radius: 10px;
 }
-.user-detail h3{
-  margin: 0px;
-  margin:0px 0px 5px 0px;
-  color: #000;
+
+.details h1 {
+  font-size: 52px;
+  font-weight: 700;
+  text-align: center;
 }
-.user-detail p{
-  font-size:14px;
-}
-.user-detail .btn{
-  margin-bottom:10px;
-  background-color: #fff;
-  border:1px solid #DEDEDE;
-  border-radius: 0px;
-  color:black;
-}
-.user-detail .btn i{
-  color:#D35B4D;
-  padding-right:18px;
-}
-.profile-pic{
-  position: absolute;
-  height:120px;
-  width:120px;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 0px;
-  z-index: 1001;
-  padding: 10px;
-}
-.profile-pic img{
- 
-  border-radius: 50%;
-  box-shadow: 0px 0px 5px 0px #c1c1c1;
-  cursor: pointer;
-  width: 100px;
-  height: 100px;
-}    */

@@ -5,18 +5,19 @@ import { ToastContainer, toast } from 'react-toastify'
 
 const Login = () => {
 
+  
   const [data, setData] = useState({
     email: '',
     password: ''
   });
   const navigate = useNavigate()
-
+  
   useEffect(() => {
     const user = localStorage.getItem('id')
     if (user) {
       navigate('/')
     }
-  },[])
+  }, [])
 
   const handleChange = (event) => {
     setData({ ...data, [event.target.name]: event.target.value })
@@ -49,6 +50,8 @@ const Login = () => {
 
   return (
     <>
+
+      
 
       <section className='d-flex justify-content-center '>
         <div className='main'>

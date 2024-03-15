@@ -1,11 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { Container, Form, Button, ToastContainer } from 'react-bootstrap';
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { adddata, postdata } from './DataSlice';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Create = () => {
 
@@ -14,8 +9,6 @@ const Create = () => {
     content: ''
   });
   const [image, setImage] = useState('')
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
 
   const handleChange = (event) => {
     setData({ ...data, [event.target.name]: event.target.value });
@@ -56,7 +49,6 @@ const Create = () => {
           content: ''
         });
         setImage('');
-        setData('')
       }
     } catch (error) {
       console.error('Error adding blog post:', error);
@@ -68,8 +60,8 @@ const Create = () => {
     <>
 
 
-      <section className='d-flex justify-content-center'>
-        <div style={{ marginTop: '150px' }}>
+      <section className='d-flex justify-content-center container '>
+        <div style={{ marginTop: '120px' }} className='blogpost'>
           <h1>Create Your Blog</h1>
           <form action="">
             <div className='post'>

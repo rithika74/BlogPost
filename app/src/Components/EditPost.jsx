@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { toast } from 'react-toastify'
+import { ToastContainer, toast } from 'react-toastify'
 
 const EditPost = () => {
     const { id } = useParams()
@@ -57,7 +57,6 @@ const EditPost = () => {
             });
             console.log("sjih", response.data);
             toast.success('Blog post updated successfully');
-            navigate('/profile');
         } catch (error) {
             console.error('Error updating blog post:', error);
             toast.error('Error updating blog post');
@@ -65,19 +64,24 @@ const EditPost = () => {
     };
 
     return (
-        <section className='d-flex justify-content-center'>
-            <div style={{ marginTop: '150px' }}>
-                <h1>Edit Your Blog</h1>
-                <form onSubmit={handleSubmit}>
-                    <div className='post'>
-                        <div><input type="text" name="title" value={formData.title} onChange={handleInputChange} placeholder='Title' /></div>
-                        <div><textarea name="content" value={formData.content} onChange={handleInputChange} cols="65" rows="10" placeholder='Content'></textarea></div>
-                        <div><input type="file" name="image" onChange={handleFileChange} style={{ padding: '0px' }} /></div>
-                        <div><button type="submit">Submit</button></div>
-                    </div>
-                </form>
-            </div>
-        </section>
+        <>
+            <section className='d-flex justify-content-center'>
+                <div style={{ marginTop: '150px' }} className='blogpost'>
+                    <h1>Edit Your Blog</h1>
+                    <form onSubmit={handleSubmit}>
+                        <div className='post'>
+                            <div><input type="text" name="title" value={formData.title} onChange={handleInputChange} placeholder='Title' /></div>
+                            <div><textarea name="content" value={formData.content} onChange={handleInputChange} cols="65" rows="10" placeholder='Content'></textarea></div>
+                            <div><input type="file" name="image" onChange={handleFileChange} style={{ padding: '0px' }} /></div>
+                            <div><button type="submit">Submit</button></div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <ToastContainer />
+
+        </>
     );
 };
 

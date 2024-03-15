@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
@@ -10,6 +10,7 @@ const UserBlogs = () => {
     const { id } = useParams();
     const [blogs, setBlogs] = useState([]);
     const [refresh, setRefresh] = useState(false);
+    const navigate=useNavigate();
 
     useEffect(() => {
         let fetchdata = async () => {
@@ -28,36 +29,41 @@ const UserBlogs = () => {
         console.log(id);
         const confirm = window.confirm('Are you sure you want to delete')
         try {
-          if (confirm) {
-            setRefresh(!refresh);
-            let response = await axios.delete(`http://localhost:5000/deletepost/${id}`);
-            console.log(response);
-            window.location.reload();
-          }
+            if (confirm) {
+                setRefresh(!refresh);
+                let response = await axios.delete(`http://localhost:5000/deletepost/${id}`);
+                console.log(response);
+                window.location.reload();
+            }
         } catch (error) {
-          console.log('Error deleting blog post');
+            console.log('Error deleting blog post');
         }
-      };
+    };
 
     return (
         <>
 
             <section style={{ marginTop: '150px' }} className='d-flex justify-content-center '>
-                <div className='blogs'>
+                <div className='blogs' style={{gap:'10px'}}>
                     {blogs.length > 0 ? (
                         blogs.map(item => (
-                            <div key={item._id} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-                                <Card style={{ width: '22rem', height: '26rem', marginBottom: '50px' }} >
-                                    <Card.Img variant="top" src={`http://localhost:5000/uploads/${item.image}`} alt="img" width={'200px'} height={'200px'} />
-                                    <Card.Body className="blog-details">
-                                        <Card.Title>
+                            <div key={item._id} className='blogs'>
+                                <Card style={{  cursor:'pointer' }} className='card'>
+                                    <Card.Img variant="top" src={`http://localhost:5000/uploads/blog/${item.image}`} alt="img" height={'200px'} />
+                                    <Card.Body >
+                                        <Card.Title >
                                             <h2>{item.title}</h2>
                                         </Card.Title>
-                                        <Card.Text>
-                                            <div>{item.content}</div>
+                                        <Card.Text onClick={() => { navigate(`/blogdetails/${item._id}`) }}>
+                                        <div>{item.content.length > 100 ? `${item.content.substring(0, 100)}...` : item.content}</div>
+                                            {item.content.length > 100 && (
+                                                <div className="read-more">
+                                                    <Link >Read More</Link>
+                                                </div>
+                                            )}
                                         </Card.Text>
-                                        <Card.Text>
-                                            <div className='d-flex flex-wrap justify-content-end align-items-center '>
+                                        <Card.Text >
+                                            <div className='d-flex flex-wrap justify-content-end'>
                                                 <Link to={`/editpost/${item._id}`}>
                                                     <button className='edit-btn' >
                                                         <FaEdit />

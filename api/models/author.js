@@ -2,17 +2,14 @@ const mongoose = require('mongoose')
 
 const authorScheme = new mongoose.Schema({
     fullname: {
-        type: String,
-        required: true
+        type: String
     },
     email: {
         type: String,
-        unique: true,
-        required: true
+        unique: true
     },
     password: {
-        type: String,
-        required: true
+        type: String
     },
     image: {
         type: String

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
-import { adddata } from './DataSlice';
-import { useDispatch } from 'react-redux'
 import axios from 'axios';
 
 const Signup = () => {
@@ -12,7 +10,6 @@ const Signup = () => {
     email: '',
     password: ''
   });
-  const dispatch = useDispatch()
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -29,7 +26,6 @@ const Signup = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (data.fullname && data.email && data.password) {
-      // dispatch(adddata(data));
       try {
         const response = await axios.post('http://localhost:5000/insert', data);
         if (response.data.emailExists) {
