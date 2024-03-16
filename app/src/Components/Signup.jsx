@@ -15,7 +15,7 @@ const Signup = () => {
   useEffect(() => {
     const user = localStorage.getItem('id')
     if (user) {
-      navigate('/')
+      navigate('/home')
     }
   })
 

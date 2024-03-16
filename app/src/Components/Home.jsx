@@ -1,3 +1,5 @@
+
+
 import React, { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -12,13 +14,13 @@ const Home = () => {
 
   useEffect(() => {
     if (!token) {
-      navigate('/login');
+      navigate('/');
     }
-  }, [token]);
+  }, [token, navigate]);
 
   const handleClick = () => {
     localStorage.clear();
-    navigate('/login');
+    navigate('/');
   };
 
   const toggleNavbar = () => {
@@ -30,7 +32,7 @@ const Home = () => {
       <header>
         <Navbar expand="lg" variant="light" className="shadow-sm fixed-top bg-light">
           <Container className='bg'>
-            <Navbar.Brand as={Link} to="/" style={{ textDecoration: 'none', color: 'black', fontSize: '32px' }}>
+            <Navbar.Brand as={Link} to="/home" style={{ textDecoration: 'none', color: 'black', fontSize: '32px' }}>
               Blog Post
             </Navbar.Brand>
             <Navbar.Toggle onClick={toggleNavbar} aria-controls="basic-navbar-nav" style={{ border: 'none', outline: 'none' }}>
@@ -38,17 +40,11 @@ const Home = () => {
             </Navbar.Toggle>
             <Navbar.Collapse id="basic-navbar-nav" className={`${expanded ? 'show' : ''}`}>
               <Nav className="ms-auto link">
-                <Nav.Link as={Link} to="/"><li>HOME</li></Nav.Link>
-                <Nav.Link as={Link} to="/blogs"><li>BLOGS</li></Nav.Link>
-                {user ? (
-                  <>
-                    <Nav.Link as={Link} to="/profile"><li>PROFILE</li></Nav.Link>
-                    <Nav.Link as={Link} to="/add"><li>CREATE YOUR BLOGS</li></Nav.Link>
-                    <Nav.Link onClick={handleClick}><li className='logout'>LogOut</li></Nav.Link>
-                  </>
-                ) : (
-                  <Nav.Link as={Link} to="/login"><li className='login'>LOGIN</li></Nav.Link>
-                )}
+                <Nav.Link as={Link} to="/home"><li>HOME</li></Nav.Link>
+                <Nav.Link as={Link} to="/home/blogs"><li>BLOGS</li></Nav.Link>
+                <Nav.Link as={Link} to="/home/profile"><li>PROFILE</li></Nav.Link>
+                <Nav.Link as={Link} to="/home/add"><li>CREATE YOUR BLOGS</li></Nav.Link>
+                <Nav.Link onClick={handleClick}><li className='logout'>LogOut</li></Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>

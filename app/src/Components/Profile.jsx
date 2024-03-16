@@ -74,6 +74,7 @@ const Profile = () => {
                 image: response.data.image
             }));
             toast.success('Profile Updated successfully');
+            window.location.reload();
         } catch (error) {
             console.error('Error updating profile:', error);
         }
@@ -98,7 +99,7 @@ const Profile = () => {
                             ):(
                                 <img src={img} alt="" width={'300px'} height={'300px'} style={{ borderRadius: '20px' }} />
                             )}
-                            <Link to={`/userblogs/${id}`}><button>Your Blogs</button></Link>
+                            <Link to={`/home/userblogs/${id}`}><button>Your Blogs</button></Link>
                         </div>
                         <div className=''>
                             <div className='editpro'>

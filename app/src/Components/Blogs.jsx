@@ -30,7 +30,7 @@ const Blogs = () => {
           {blogs.length > 0 ? (
             blogs.map(item => (
               <div key={item._id} className='blogs'>
-                <Card style={{  cursor:'pointer' }} className='card' onClick={() => { navigate(`/blogdetails/${item._id}`) }}>
+                <Card style={{  cursor:'pointer' }} className='card' onClick={() => { navigate(`/home/blogdetails/${item._id}`) }}>
                   <Card.Img variant="top" src={`http://localhost:5000/uploads/blog/${item.image}`} alt="blog" height={'200px'} />
                   <Card.Body>
                     <Card.Title>

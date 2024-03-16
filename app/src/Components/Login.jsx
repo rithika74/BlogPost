@@ -15,7 +15,7 @@ const Login = () => {
   useEffect(() => {
     const user = localStorage.getItem('id')
     if (user) {
-      navigate('/')
+      navigate('/home')
     }
   }, [])
 
@@ -36,15 +36,14 @@ const Login = () => {
       if (response.data) {
         console.log('success');
         toast.success('Login success')
-        // navigate(`/profile/${response.data.user._id}`)
-        navigate('/')
+        navigate('/home')
       }
       else {
         toast.error('Login Failed')
       }
 
     } catch (e) {
-      toast.error('failed');
+      toast.error('Login Failed');
     }
   }
 

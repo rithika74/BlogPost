@@ -16,23 +16,29 @@ import Blogs from './Components/Blogs';
 import EditPost from './Components/EditPost';
 import UserBlogs from './Components/UserBlogs';
 import BlogDetails from './Components/BlogDetails';
+import LoginNav from './Components/LoginNav';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Home />}>
+        <Route path='/' element={<LoginNav />}>
           <Route index element={<Intro />} />
           <Route path='login' element={<Login />} />
           <Route path='signup' element={<Signup />} />
           <Route path='blogs' element={<Blogs />} />
-          <Route path='add' element={<Create />} />
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/editpost/:id' element={<EditPost />} />
-          <Route path='/userblogs/:id' element={<UserBlogs />} />
-          <Route path='/blogdetails/:id' element={<BlogDetails />} />
         </Route>
+        <Route path='/home' element={<Home />}>
+          <Route index element={<Intro />} />
+          <Route path='blogs' element={<Blogs />} />
+          <Route path='add' element={<Create />} />
+          <Route path='profile' element={<Profile />} />
+          <Route path='editpost/:id' element={<EditPost />} />
+          <Route path='userblogs/:id' element={<UserBlogs />} />
+          <Route path='blogdetails/:id' element={<BlogDetails />} />
+        </Route>
+
       </Routes>
 
     </BrowserRouter>

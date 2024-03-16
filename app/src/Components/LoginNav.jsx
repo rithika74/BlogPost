@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Link, Outlet } from 'react-router-dom'
-import Intro from './Intro';
+import { Link, Outlet } from 'react-router-dom';
 
 const LoginNav = () => {
 
@@ -26,7 +25,7 @@ const LoginNav = () => {
                         </Navbar.Toggle>
                         <Navbar.Collapse id="basic-navbar-nav" className={`${expanded ? 'show' : ''}`}>
                             <Nav className="ms-auto link">
-                                <Nav.Link href="#home" as={Link} to={<Intro />}><li>HOME</li></Nav.Link>
+                                <Nav.Link href="#home" as={Link} to='/home'><li>HOME</li></Nav.Link>
                                 <Nav.Link href="#link" as={Link} to='/blogs'><li>BLOGS</li></Nav.Link>
                                 <Nav.Link href="#link" as={Link} to='/login'><li className='login'>LOGIN</li></Nav.Link>
                             </Nav>

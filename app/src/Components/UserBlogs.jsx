@@ -54,7 +54,7 @@ const UserBlogs = () => {
                                         <Card.Title >
                                             <h2>{item.title}</h2>
                                         </Card.Title>
-                                        <Card.Text onClick={() => { navigate(`/blogdetails/${item._id}`) }}>
+                                        <Card.Text onClick={() => { navigate(`/home/blogdetails/${item._id}`) }}>
                                         <div>{item.content.length > 100 ? `${item.content.substring(0, 100)}...` : item.content}</div>
                                             {item.content.length > 100 && (
                                                 <div className="read-more">
@@ -64,7 +64,7 @@ const UserBlogs = () => {
                                         </Card.Text>
                                         <Card.Text >
                                             <div className='d-flex flex-wrap justify-content-end'>
-                                                <Link to={`/editpost/${item._id}`}>
+                                                <Link to={`/home/editpost/${item._id}`}>
                                                     <button className='edit-btn' >
                                                         <FaEdit />
                                                     </button>
