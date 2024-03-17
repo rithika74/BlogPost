@@ -60,8 +60,8 @@ const Create = () => {
     <>
 
 
-      <section className='d-flex justify-content-center container '>
-        <div style={{ marginTop: '120px' }} className='blogpost'>
+      <section className='d-flex justify-content-center container ' style={{ marginTop: '120px' }}>
+        <div className='blogpost'>
           <h1>Create Your Blog</h1>
           <form action="">
             <div className='post'>

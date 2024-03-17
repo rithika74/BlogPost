@@ -65,8 +65,8 @@ const EditPost = () => {
 
     return (
         <>
-            <section className='d-flex justify-content-center'>
-                <div style={{ marginTop: '150px' }} className='blogpost'>
+            <section className='d-flex justify-content-center' style={{ marginTop: '150px' }}>
+                <div  className='blogpost'>
                     <h1>Edit Your Blog</h1>
                     <form onSubmit={handleSubmit}>
                         <div className='post'>

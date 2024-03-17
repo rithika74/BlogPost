@@ -90,30 +90,34 @@ const Profile = () => {
         <>
 
 
-            <section className='d-flex justify-content-center align-items-center ' style={{ marginTop: '150px' }}>
+            <section className='d-flex justify-content-center align-items-center ' style={{ marginTop: '120px' }}>
                 <div className=' container '>
                     <div className='profile'>
-                        <div className='img'>
-                            {update.image ? (
-                                <img src={`http://localhost:5000/uploads/profile/${update.image}`} alt="" width={'300px'} height={'300px'} style={{ borderRadius: '20px' }} />
-                            ):(
-                                <img src={img} alt="" width={'300px'} height={'300px'} style={{ borderRadius: '20px' }} />
-                            )}
-                            <Link to={`/home/userblogs/${id}`}><button>Your Blogs</button></Link>
-                        </div>
                         <div className=''>
                             <div className='editpro'>
                                 <form action="" onSubmit={handleUpdate}>
+                                    <div className='img'>
+                                        {update.image ? (
+                                            <img src={`http://localhost:5000/uploads/profile/${update.image}`} alt="" width={'150px'} height={'150px'} style={{ borderRadius: '100px' }} />
+                                        ) : (
+                                            <img src={img} alt="" width={'150px'} height={'150px'} style={{ borderRadius: '100px' }} />
+                                        )}
+                                        <h1>{update.fullname}</h1>
+                                        <Link to={`/home/userblogs/${id}`}><button>Your Blogs</button></Link>
+                                    </div>
                                     <div className="form-group">
+                                        <label htmlFor="fullname">Full Name</label>
                                         <input type="text" id="fullname" name="fullname" onChange={handleChange} value={update.fullname} placeholder='fullname' />
                                     </div>
                                     <div className="form-group">
+                                        <label htmlFor="email">Email Address</label>
                                         <input type="email" id="email" name="email" onChange={handleChange} value={update.email} placeholder='email' />
                                     </div>
                                     <div className="form-group">
-                                        <input type="password" id="password" name="password" onChange={handleChange} placeholder="Current Password" />
+                                        <input type="password" id="password" name="password" onChange={handleChange} placeholder="Change Password" />
                                     </div>
                                     <div className="form-group">
+                                        <label htmlFor="image">Add Profile Photo</label>
                                         <input type="file" name="image" id="" onChange={handleImageChange} />
                                     </div>
                                     <button type="submit">Update Profile</button>

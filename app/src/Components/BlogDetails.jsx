@@ -26,10 +26,12 @@ const BlogDetails = () => {
         <>
 
             <section>
-                <div className='details container '>
-                    <h1>{blogs.title}</h1>
-                    <img src={`http://localhost:5000/uploads/blog/${blogs.image}`} alt="" />
-                    <p style={{ marginTop: '30px' }}>{blogs.content}</p>
+                <div>
+                    <div className='details container '>
+                        <h1>{blogs.title}</h1>
+                        <img src={`http://localhost:5000/uploads/blog/${blogs.image}`} alt="" />
+                        <div>{blogs.content}</div>
+                    </div>
                 </div>
             </section>
 
@@ -39,3 +41,4 @@ const BlogDetails = () => {
 }
 
 export default BlogDetails
+
