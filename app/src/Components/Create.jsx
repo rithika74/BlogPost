@@ -62,7 +62,7 @@ const Create = () => {
 
       <section className='d-flex justify-content-center container ' style={{ marginTop: '120px' }}>
         <div className='blogpost'>
-          <h1>Create Your Blog</h1>
+          <h1 className=' fw-semibold '>Create Your Blog</h1>
           <form action="">
             <div className='post'>
               <div><input type="text" name="title" onChange={handleChange} value={data.title ? data.title : ''} id="" placeholder='Title' /></div>

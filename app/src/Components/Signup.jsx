@@ -55,7 +55,7 @@ const Signup = () => {
         <div className='main'>
           <form action="" onSubmit={handleSubmit}>
             <div>
-              <h1>SIGN UP</h1>
+              <h1 className=' fw-semibold '>SIGN UP</h1>
               <input type="text" name="fullname" onChange={handleChange} value={data.fullname ? data.fullname : ''} id="" placeholder='Fullname' />
               <input type="email" name="email" onChange={handleChange} value={data.email ? data.email : ''} id="" placeholder='Email' />
               <input type="password" name="password" onChange={handleChange} value={data.password ? data.password : ''} id="" placeholder='Password' />

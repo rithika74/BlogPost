@@ -15,13 +15,13 @@ const Intro = () => {
                 <Container style={{ marginTop: '120px' }}>
                     <Row className="justify-content-center">
                         <Col xs={12} md={8}>
-                            <h1 className="text-center mb-4">Welcome to Our Blog Posting Platform</h1>
+                            <h1 className="mb-4 hd2" >Welcome to Our Blog Posting Platform</h1>
                         </Col>
                     </Row>
                     <Row style={{ marginTop: '50px' }} className="justify-content-center">
                         <Col xs={12} md={6}>
                             <div style={{ marginTop: '100px' }}>
-                                <h5>Share Your Thoughts, Share Your Stories</h5>
+                                <h5 className=' fw-bold '>Share Your Thoughts, Share Your Stories</h5>
                                 <div>
                                     Here at our blog posting platform, we believe that everyone has a story to tell and insights worth sharing. With our intuitive interface, you can effortlessly upload your posts and connect with a global audience. Whether it's a personal anecdote, a professional opinion, or a creative masterpiece, your words have the power to inspire and engage.
                                 </div>
@@ -41,7 +41,7 @@ const Intro = () => {
                         </Col>
                         <Col xs={12} md={6}>
                             <div style={{ marginTop: '100px' }}>
-                                <h5>Effortless Editing and Management</h5>
+                                <h5 className=' fw-bold '>Effortless Editing and Management</h5>
                                 <div>
                                     Editing your posts has never been easier. Our platform offers a range of tools to help you fine-tune your content to perfection. From formatting options to spell-checking features, we've got you covered. And when it comes to managing your account, it's as simple as a few clicks. Update your details, delete or modify posts – all from one convenient dashboard.
                                 </div>
@@ -52,7 +52,7 @@ const Intro = () => {
                     <Row style={{ marginTop: '50px' }} className="justify-content-center">
                         <Col xs={12} md={6}>
                             <div style={{ marginTop: '100px' }}>
-                                <h5>Join Our Community of Creatives</h5>
+                                <h5 className=' fw-bold '>Join Our Community of Creatives</h5>
                                 <div>
                                     Become a part of our vibrant community of writers, thinkers, and storytellers. Connect with like-minded individuals, share ideas, and support one another's creative endeavors. Whether you're seeking feedback on your latest piece or looking for inspiration for your next project, you'll find a welcoming community ready to cheer you on.
                                 </div>
@@ -72,7 +72,7 @@ const Intro = () => {
                         </Col>
                         <Col xs={12} md={6}>
                             <div style={{ marginTop: '100px' }}>
-                                <h5>Start Sharing Your Stories Today</h5>
+                                <h5 className=' fw-bold '>Start Sharing Your Stories Today</h5>
                                 <div>
                                     Ready to unleash your creativity? Sign up now and start sharing your stories with the world. Whether you're a seasoned blogger or a first-time writer, our platform provides the perfect space to showcase your talents and connect with a global audience. Join us today and let your voice be heard!
                                 </div>

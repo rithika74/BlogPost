@@ -67,7 +67,7 @@ const EditPost = () => {
         <>
             <section className='d-flex justify-content-center' style={{ marginTop: '150px' }}>
                 <div  className='blogpost'>
-                    <h1>Edit Your Blog</h1>
+                    <h1 className=' fw-semibold '>Edit Your Blog</h1>
                     <form onSubmit={handleSubmit}>
                         <div className='post'>
                             <div><input type="text" name="title" value={formData.title} onChange={handleInputChange} placeholder='Title' /></div>

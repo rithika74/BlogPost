@@ -25,7 +25,7 @@ const Blogs = () => {
   console.log("kjhhhkjkjh", blogs);
   return (
     <>
-      <section style={{ marginTop: '150px' }} className='d-flex justify-content-center'>
+      <section style={{ marginTop: '120px' }} className='d-flex justify-content-center'>
         <div className='blogs' style={{gap:'10px'}}>
           {blogs.length > 0 ? (
             blogs.map(item => (

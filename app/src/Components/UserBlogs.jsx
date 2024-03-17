@@ -49,19 +49,19 @@ const UserBlogs = () => {
                         blogs.map(item => (
                             <div key={item._id} className='blogs'>
                                 <Card style={{  cursor:'pointer' }} className='card'>
-                                    <Card.Img variant="top" src={`http://localhost:5000/uploads/blog/${item.image}`} alt="img" height={'200px'} />
+                                    <Card.Img variant="top" src={`http://localhost:5000/uploads/blog/${item.image}`} onClick={() => { navigate(`/home/blogdetails/${item._id}`) }} alt="img" height={'200px'} />
                                     <Card.Body >
                                         <Card.Title >
                                             <h2>{item.title}</h2>
                                         </Card.Title>
-                                        <Card.Text onClick={() => { navigate(`/home/blogdetails/${item._id}`) }}>
+                                        {/* <Card.Text onClick={() => { navigate(`/home/blogdetails/${item._id}`) }}>
                                         <div>{item.content.length > 100 ? `${item.content.substring(0, 100)}...` : item.content}</div>
                                             {item.content.length > 100 && (
                                                 <div className="read-more">
                                                     <Link >Read More</Link>
                                                 </div>
                                             )}
-                                        </Card.Text>
+                                        </Card.Text> */}
                                         <Card.Text >
                                             <div className='d-flex flex-wrap justify-content-end'>
                                                 <Link to={`/home/editpost/${item._id}`}>

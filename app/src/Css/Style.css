@@ -1,3 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Eater&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Spinnaker&display=swap');
+
+
+.hd1{
+  font-family: "Eater", serif;
+  text-decoration: none;
+  color: black;
+  font-size: 32px;
+}
+
+.hd2{
+  font-size: 44px;
+  font-weight: bold;
+  text-align: center;
+  font-family: "Spinnaker", sans-serif;
+}
+
+h1{
+  font-family: "Spinnaker", sans-serif;
+}
+
+
 .bg {
   display: flex;
   justify-content: space-around;
@@ -252,7 +276,7 @@
 
 .card{
   margin: 0px 10px 50px 10px;
-  width: 22rem;
+  width: 26rem;
   height: 22rem;
 }
 
@@ -307,7 +331,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 120px 0px 50px 0px;
+  /* margin: 200px 0px 0px 0px; */
 }
 
 .details img {
@@ -324,6 +348,8 @@
 
 .details div {
   max-width: 70rem;
-  margin-top: 30px; 
+  margin-top: 50px; 
   text-align: justify;
+  font-size: 18px;
+  white-space: pre-wrap;
 }

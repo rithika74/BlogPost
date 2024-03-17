@@ -42,7 +42,7 @@ const Home = () => {
           onToggle={handleToggle}
         >
           <Container className='bg'>
-            <Navbar.Brand as={Link} to="/home" style={{ textDecoration: 'none', color: 'black', fontSize: '32px' }}>
+            <Navbar.Brand as={Link} to="/home" className='hd1'>
               Blog Post
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" style={{ border: 'none', outline: 'none' }}>

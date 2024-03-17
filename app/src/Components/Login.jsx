@@ -56,7 +56,7 @@ const Login = () => {
         <div className='main'>
           <form action="" onSubmit={handleSubmit}>
             <div>
-              <h1>LOGIN</h1>
+              <h1 className=' fw-semibold '>LOGIN</h1>
               <input type="email" name="email" onChange={handleChange} id="" placeholder='Email' />
               <input type="password" name="password" onChange={handleChange} id="" placeholder='Password' />
               <button>Login</button>
