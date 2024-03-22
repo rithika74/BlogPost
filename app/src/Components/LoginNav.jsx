@@ -12,7 +12,7 @@ const LoginNav = () => {
     };
 
     const handleNavLinkClick = () => {
-        setIsNavExpanded(false); // Close the navbar when a link is clicked
+        setIsNavExpanded(false); 
     };
 
     return (
