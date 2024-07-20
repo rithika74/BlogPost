@@ -28,6 +28,7 @@ root.render(
           <Route path='login' element={<Login />} />
           <Route path='signup' element={<Signup />} />
           <Route path='blogs' element={<Blogs />} />
+          <Route path='blogdetails/:id' element={<BlogDetails />} />
         </Route>
         <Route path='/home' element={<Home />}>
           <Route index element={<Intro />} />
